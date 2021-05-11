@@ -10,13 +10,16 @@ import ScreenSaver
 class Matrix_ScreenSaverView: ScreenSaverView {
     var chars: [Character]
     var onPreview: Bool
+    var inFrame: NSRect
+    
     // MARK: - Initialization
     override init?(frame: NSRect, isPreview: Bool) {
+        inFrame = frame
         chars = [
-            Character(frame: frame, isPreview: isPreview)
+            Character(frame: inFrame, isPreview: isPreview)
         ]
         self.onPreview = isPreview
-        super.init(frame: frame, isPreview: isPreview)
+        super.init(frame: inFrame, isPreview: isPreview)
     }
 
     @available(*, unavailable)
@@ -37,16 +40,16 @@ class Matrix_ScreenSaverView: ScreenSaverView {
         for char in chars {
             char.move()
             idx += 1
-            if char.lifespan <= 0 {
+            if (char.Y < inFrame.minY - 100) {
                 chars.remove(at: idx)
             }
         }
         
         if self.onPreview {
-            chars.append(Character(frame: bounds, isPreview: true))
+            chars.append(Character(frame: inFrame, isPreview: true))
         } else {
-            for _ in 1 ... 3 {
-                chars.append(Character(frame: bounds, isPreview: false))
+            for _ in 1 ... 5 {
+                chars.append(Character(frame: inFrame, isPreview: false))
             }
         }
         
@@ -71,25 +74,28 @@ class Character: NSObject {
     let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789あアかカさサたタなナはハまマやヤらラわワいイきキしシちチにニひヒみミりリゐヰうウくクすスつツぬヌふフむムゆユるルえエけケせセてテねネへヘめメれレゑヱおオこコそソとトのノほホもモよヨろロをヲんンゃゅょ"
     public var X: CGFloat
     public var Y: CGFloat
-    public var char: String = "X"
-    public var lifespan: Int = 50
-    public var speed: Int = 10
+    public var char: String = ""
+    public var lifespan: Float = 50
+    public var speed: Float = 10
     private var frame: NSRect
-    private var totalLifespan: Int = 50
+    private var totalLifespan: Float = 50
     private var special: Bool = false
     private var isPreview: Bool = false
+    private let fontSize: Int = 12
     
     init (frame: NSRect, isPreview: Bool) {
-        X = CGFloat.random(in: frame.minX ... frame.maxX)
-        Y = CGFloat.random(in: frame.minY ... frame.maxY) // frame.maxY // frame.midY
-        lifespan = Int.random(in: 100 ... 200)
+        X = CGFloat(Int(CGFloat.random(in: frame.minX ... frame.maxX) / CGFloat(fontSize)) * fontSize)
+        Y = CGFloat.random(in: frame.maxY ... frame.maxY + 50) // frame.maxY // frame.midY
+        speed = Float.random(in: 2 ... 12)
+        lifespan = Float.random(in: 100 ... 500)
         totalLifespan = lifespan
-        speed = Int.random(in: 12 ... 24)
         if Double.random(in: 0 ... 1) >= 0.99 {
             char = "NEO, PICK UP THE PHONE"
             special = true
         } else {
-            char = String(letters.randomElement()!)
+            for _ in 5 ... Int.random(in: 6 ... 10) {
+                char += String(letters.randomElement()!)
+            }
         }
         self.frame = frame
         self.isPreview = isPreview
@@ -99,29 +105,32 @@ class Character: NSObject {
         var idx = 0
         for letter in char {
             let attributes: [NSAttributedString.Key: Any] = [
-                .foregroundColor: NSColor(red: 0, green: 1, blue: 0, alpha: CGFloat(lifespan) / CGFloat(totalLifespan)),
-                .font: NSFont.systemFont(ofSize: self.isPreview ? 6 : 12)
+                .foregroundColor: NSColor(red: 0, green: 1, blue: 0, alpha: CGFloat(lifespan) * CGFloat(Double(idx/char.count) < 0.5 ? char.count / 2 : idx) / (CGFloat(totalLifespan) * CGFloat(char.count))),
+                .font: NSFont.systemFont(ofSize: CGFloat(self.isPreview ? fontSize / 2 : fontSize))
             ]
             let attrChar = NSAttributedString(string: String(letter), attributes: attributes)
-            let location = NSPoint(x: X, y: Y - CGFloat(idx) * CGFloat(speed))
+            let location = NSPoint(x: X, y: Y - CGFloat(idx) * CGFloat(fontSize))
             
             guard let gc = NSGraphicsContext.current else { return }
             gc.saveGraphicsState()
-            defer {
-                gc.restoreGraphicsState()
+            //defer {
+            //    gc.restoreGraphicsState()
+            //}
+            if !special {
+                gc.cgContext.translateBy(x: frame.origin.x + frame.size.width, y: frame.origin.y)
+                gc.cgContext.scaleBy(x: -1, y: 1)
             }
-            gc.cgContext.translateBy(x: frame.origin.x + frame.size.width, y: frame.origin.y)
-            gc.cgContext.scaleBy(x: -1, y: 1)
             attrChar.draw(at: location)
+            gc.restoreGraphicsState()
             idx += 1
         }
     }
     
     public func move() {
         X += 0 // CGFloat.random(in: -10 ... 10)
-        Y -= 0 // CGFloat(speed) // CGFloat.random(in: -10 ... 10)
-        lifespan -= 1
-        if (lifespan % 12 == 0 && !special) {
+        Y -= CGFloat(speed) // CGFloat.random(in: -10 ... 10)
+        lifespan -= speed * 0.1
+        if (Int(lifespan) % 12 == 0 && !special) {
             char += String(letters.randomElement()!)
         }
     }
