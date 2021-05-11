@@ -9,7 +9,7 @@ Share it for FREE!
 1. Download the Source and Unzip it
 2. Open Terminal
 3. Change to the folder Matrix-ScreenSaver
-4. Run the command "sudo xattr -r -d com.apple.guarantine Matrix-ScreenSaver.saver"
+4. Run the command "sudo xattr -r -d com.apple.quarantine Matrix-ScreenSaver.saver"
 5. Double-click the Matrix-ScreenSaver.saver to install
 
 [![Creative Commons Licence](https://i.creativecommons.org/l/by-nc/4.0/88x31.png)](http://creativecommons.org/licenses/by-nc/4.0/)  
