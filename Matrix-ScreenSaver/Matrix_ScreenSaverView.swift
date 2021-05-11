@@ -102,10 +102,10 @@ class Character: NSObject {
     }
     
     public func draw() {
-        var idx = 0
-        for letter in char {
+        var idx = char.count
+        for letter in char.reversed() {
             let attributes: [NSAttributedString.Key: Any] = [
-                .foregroundColor: NSColor(red: 0, green: 1, blue: 0, alpha: CGFloat(lifespan) * CGFloat(Double(idx/char.count) < 0.5 ? char.count / 2 : idx) / (CGFloat(totalLifespan) * CGFloat(char.count))),
+                .foregroundColor: idx == char.count ? NSColor(red: 0.75, green: 1, blue: 0.75, alpha: 1) : NSColor(red: 0, green: 1, blue: 0, alpha: CGFloat(lifespan) * CGFloat(Double(idx/char.count) < 0.5 ? char.count / 2 : idx) / (CGFloat(totalLifespan) * CGFloat(char.count))),
                 .font: NSFont.systemFont(ofSize: CGFloat(self.isPreview ? fontSize / 2 : fontSize))
             ]
             let attrChar = NSAttributedString(string: String(letter), attributes: attributes)
@@ -122,7 +122,7 @@ class Character: NSObject {
             }
             attrChar.draw(at: location)
             gc.restoreGraphicsState()
-            idx += 1
+            idx -= 1
         }
     }
     
