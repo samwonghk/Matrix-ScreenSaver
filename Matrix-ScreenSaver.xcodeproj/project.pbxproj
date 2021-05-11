@@ -7,11 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		60335291264AEF300043A1AC /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 60335290264AEF300043A1AC /* readme.md */; };
 		60AEC172264A645000DA9DD6 /* Matrix_ScreenSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AEC171264A645000DA9DD6 /* Matrix_ScreenSaverView.swift */; };
 		60CDC2A8264A9B8100323C64 /* Matrix-ScreenSaver.saver in Resources */ = {isa = PBXBuildFile; fileRef = 60CDC2A7264A9B8100323C64 /* Matrix-ScreenSaver.saver */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		60335290264AEF300043A1AC /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		60AEC164264A63ED00DA9DD6 /* Matrix-ScreenSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Matrix-ScreenSaver.saver"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AEC16B264A63ED00DA9DD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60AEC171264A645000DA9DD6 /* Matrix_ScreenSaverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix_ScreenSaverView.swift; sourceTree = "<group>"; };
@@ -32,6 +34,7 @@
 		60AEC15A264A63ED00DA9DD6 = {
 			isa = PBXGroup;
 			children = (
+				60335290264AEF300043A1AC /* readme.md */,
 				60AEC166264A63ED00DA9DD6 /* Matrix-ScreenSaver */,
 				60AEC165264A63ED00DA9DD6 /* Products */,
 			);
@@ -123,6 +126,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				60335291264AEF300043A1AC /* readme.md in Resources */,
 				60CDC2A8264A9B8100323C64 /* Matrix-ScreenSaver.saver in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
