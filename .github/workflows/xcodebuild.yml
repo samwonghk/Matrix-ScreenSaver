@@ -43,9 +43,9 @@ jobs:
           
       - name: Zip File
         run: |
-          {{% for o in steps.build_file.outputs %}}
+          {% for o in steps.build_file.outputs %}
           echo {{ o }}
-          {{% endfor %}}
+          {% endfor %}
       # ls /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build
       # zip -r ./Release/Matrix-ScreenSaver.zip ./Release/Matrix-ScreenSaver.saver
           
