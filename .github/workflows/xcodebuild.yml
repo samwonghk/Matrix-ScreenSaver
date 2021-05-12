@@ -33,17 +33,18 @@ jobs:
           p12-password: ${{ secrets.SIGNING_CERTIFICATE_ASPATIAL_P12_PASSWORD }}
 
       - name: Build File
+        id: build_file
         uses: sersoft-gmbh/xcodebuild-action@v1
         with:
           project: Matrix-ScreenSaver.xcodeproj
           scheme: Matrix-ScreenSaver
           destination: platform=macOS
-          result-bundle-path: build
           action: build
           
       - name: Zip File
         run: |
-          ls /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build
+          echo ${{ steps.build_file.outputs }}
+      # ls /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build
       # zip -r ./Release/Matrix-ScreenSaver.zip ./Release/Matrix-ScreenSaver.saver
           
           
