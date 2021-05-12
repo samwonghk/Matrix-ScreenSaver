@@ -28,6 +28,6 @@ jobs:
       - uses: sersoft-gmbh/xcodebuild-action@v1
         with:
           project: Matrix-ScreenSaver.xcodeproj
-          scheme: My Mac
+          scheme: Matrix-ScreenSaver
           destination: platform=macOS
-          action: build
+          action: test
