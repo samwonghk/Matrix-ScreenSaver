@@ -48,7 +48,7 @@ class Matrix_ScreenSaverView: ScreenSaverView {
         if self.onPreview {
             chars.append(Character(frame: inFrame, isPreview: true))
         } else {
-            for _ in 1 ... 5 {
+            for _ in 1 ... Int.random(in: 1 ... 5) {
                 chars.append(Character(frame: inFrame, isPreview: false))
             }
         }
