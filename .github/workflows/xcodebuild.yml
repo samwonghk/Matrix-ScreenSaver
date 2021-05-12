@@ -30,4 +30,4 @@ jobs:
           project: Matrix-ScreenSaver.xcodeproj
           scheme: Matrix-ScreenSaver
           destination: platform=macOS
-          action: test
+          action: build
