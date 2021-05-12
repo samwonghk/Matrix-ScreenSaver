@@ -43,8 +43,7 @@ jobs:
           
       - name: Zip File
         run: |
-          ls /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver
-          ls ./
+          ls ./Matrix-ScreenSaver
       # ls /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build
       # zip -r ./Release/Matrix-ScreenSaver.zip ./Release/Matrix-ScreenSaver.saver
           
