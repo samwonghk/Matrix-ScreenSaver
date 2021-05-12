@@ -38,12 +38,11 @@ jobs:
           project: Matrix-ScreenSaver.xcodeproj
           scheme: Matrix-ScreenSaver
           destination: platform=macOS
-          result-bundle-path: ./Release/
           action: build
           
       - name: Zip File
         run: |
-          ls ./Release/
+          ls ./build/Release/
       # zip -r ./Release/Matrix-ScreenSaver.zip ./Release/Matrix-ScreenSaver.saver
           
           
