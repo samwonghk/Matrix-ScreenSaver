@@ -10,7 +10,7 @@ Share it for FREE!
 2. Open Terminal
 3. Change to the folder with Matrix-ScreenSaver.saver
 4. Run the command "sudo xattr -r -d com.apple.quarantine Matrix-ScreenSaver.saver"
-5. Copy the Matrix-ScreenSaver.saver to ~/Library/Screen Savers
+5. Copy the Matrix-ScreenSaver.saver to ~/Library/Screen Savers or Double-click the Matrix-ScreenSaver.saver to install
 6. Goto System Preferences -> Desktop & Screen Saver -> Screen Saver
 7. Choose the newly added Screen Saver
 
