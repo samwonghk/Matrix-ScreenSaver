@@ -41,7 +41,7 @@
 	<key>DTXcodeBuild</key>
 	<string>12E262</string>
 	<key>LSMinimumSystemVersion</key>
-	<string>11.2</string>
+	<string>11.0</string>
 	<key>NSPrincipalClass</key>
 	<string>Matrix-ScreenSaver.Matrix_ScreenSaverView</string>
 </dict>

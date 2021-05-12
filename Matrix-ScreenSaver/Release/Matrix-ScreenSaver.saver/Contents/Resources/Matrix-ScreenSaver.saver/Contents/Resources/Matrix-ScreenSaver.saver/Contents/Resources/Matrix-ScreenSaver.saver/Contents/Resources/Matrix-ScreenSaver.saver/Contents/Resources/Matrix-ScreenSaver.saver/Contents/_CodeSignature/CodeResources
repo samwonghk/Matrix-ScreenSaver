@@ -10,11 +10,23 @@
 		</data>
 		<key>Resources/Matrix-ScreenSaver.saver/Contents/MacOS/Matrix-ScreenSaver</key>
 		<data>
+		7egB9N9R1hSBquR/m4QUjW4uxJs=
+		</data>
+		<key>Resources/Matrix-ScreenSaver.saver/Contents/Resources/Matrix-ScreenSaver.saver/Contents/Info.plist</key>
+		<data>
+		ojk2XGj8gMF0hLoEaTlaGIX6wPQ=
+		</data>
+		<key>Resources/Matrix-ScreenSaver.saver/Contents/Resources/Matrix-ScreenSaver.saver/Contents/MacOS/Matrix-ScreenSaver</key>
+		<data>
 		3oSrTP5UIegKyG5iMcC+98BExb4=
+		</data>
+		<key>Resources/Matrix-ScreenSaver.saver/Contents/Resources/Matrix-ScreenSaver.saver/Contents/_CodeSignature/CodeResources</key>
+		<data>
+		YwoIhzByBpYWzcwx9V5tdCMIbXg=
 		</data>
 		<key>Resources/Matrix-ScreenSaver.saver/Contents/_CodeSignature/CodeResources</key>
 		<data>
-		YwoIhzByBpYWzcwx9V5tdCMIbXg=
+		QLSUdl68Q+Trmr7YHkq6l/UYoZI=
 		</data>
 	</dict>
 	<key>files2</key>
@@ -30,14 +42,35 @@
 		<dict>
 			<key>hash2</key>
 			<data>
+			s+eJ1bVsKMCOqnQfD2EqplIiEStlgnGC9x5GGbL/krI=
+			</data>
+		</dict>
+		<key>Resources/Matrix-ScreenSaver.saver/Contents/Resources/Matrix-ScreenSaver.saver/Contents/Info.plist</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			MlgnIg83+V7RqvBniozwQ0anxORV8ePHTm4YrxvYDIk=
+			</data>
+		</dict>
+		<key>Resources/Matrix-ScreenSaver.saver/Contents/Resources/Matrix-ScreenSaver.saver/Contents/MacOS/Matrix-ScreenSaver</key>
+		<dict>
+			<key>hash2</key>
+			<data>
 			9dU+kfBR1tOS7NDxZMVqbi/duqMLEGQzn5cb6KO5RBE=
+			</data>
+		</dict>
+		<key>Resources/Matrix-ScreenSaver.saver/Contents/Resources/Matrix-ScreenSaver.saver/Contents/_CodeSignature/CodeResources</key>
+		<dict>
+			<key>hash2</key>
+			<data>
+			ZobeEKKKL+EbNsu4bcusyCfPxOoRa02r8YReWu5inps=
 			</data>
 		</dict>
 		<key>Resources/Matrix-ScreenSaver.saver/Contents/_CodeSignature/CodeResources</key>
 		<dict>
 			<key>hash2</key>
 			<data>
-			ZobeEKKKL+EbNsu4bcusyCfPxOoRa02r8YReWu5inps=
+			BmROczPm8d+K2NFU0gbIOZkm0ODWDPR7TGQS7EoqJhk=
 			</data>
 		</dict>
 	</dict>
