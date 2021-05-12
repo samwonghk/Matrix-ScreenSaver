@@ -43,7 +43,8 @@ jobs:
           
       - name: Zip File
         run: |
-          echo ${{ steps.build_file.outputs[0] }}
+          ls /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver
+          ls ./
       # ls /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build
       # zip -r ./Release/Matrix-ScreenSaver.zip ./Release/Matrix-ScreenSaver.saver
           
