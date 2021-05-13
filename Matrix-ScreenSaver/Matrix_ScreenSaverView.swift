@@ -8,7 +8,7 @@
 import ScreenSaver
 
 class Matrix_ScreenSaverView: ScreenSaverView {
-    var chars: [Character]
+    var chars: [Character?]
     var onPreview: Bool
     var inFrame: NSRect
     
@@ -37,11 +37,12 @@ class Matrix_ScreenSaverView: ScreenSaverView {
     override func animateOneFrame() {
         super.animateOneFrame()
         var idx = 0
-        for char in chars {
-            char.move()
+        for var char in chars {
+            char!.move()
             idx += 1
-            if (char.Y < inFrame.minY - 100) {
+            if (char!.Y < inFrame.minY - 100) {
                 chars.remove(at: idx)
+                char = nil
             }
         }
         
@@ -65,7 +66,7 @@ class Matrix_ScreenSaverView: ScreenSaverView {
     
     private func drawCharacter() {
         for char in chars {
-            char.draw()
+            char!.draw()
         }
     }
 }
@@ -93,12 +94,16 @@ class Character: NSObject {
             char = "NEO, PICK UP THE PHONE"
             special = true
         } else {
-            for _ in 5 ... Int.random(in: 6 ... 10) {
+            for _ in 5 ... Int.random(in: 6 ... 20) {
                 char += String(letters.randomElement()!)
             }
         }
         self.frame = frame
         self.isPreview = isPreview
+    }
+    
+    deinit {
+
     }
     
     public func draw() {
