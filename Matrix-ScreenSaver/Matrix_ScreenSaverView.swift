@@ -11,15 +11,21 @@ class Matrix_ScreenSaverView: ScreenSaverView {
     var chars: [Character?]
     var onPreview: Bool
     var inFrame: NSRect
+    var timer: Timer? = nil
     
     // MARK: - Initialization
     override init?(frame: NSRect, isPreview: Bool) {
         inFrame = frame
         chars = [
-            Character(frame: inFrame, isPreview: isPreview)
+            // Character(frame: inFrame, isPreview: isPreview)
         ]
-        self.onPreview = isPreview
+        onPreview = isPreview
         super.init(frame: inFrame, isPreview: isPreview)
+        timer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true, block: onTimer)
+    }
+    
+    deinit {
+       timer = nil
     }
 
     @available(*, unavailable)
@@ -36,24 +42,7 @@ class Matrix_ScreenSaverView: ScreenSaverView {
 
     override func animateOneFrame() {
         super.animateOneFrame()
-        var idx = 0
-        for var char in chars {
-            char!.move()
-            idx += 1
-            if (char!.Y < inFrame.minY - 100) {
-                chars.remove(at: idx)
-                char = nil
-            }
-        }
-        
-        if self.onPreview {
-            chars.append(Character(frame: inFrame, isPreview: true))
-        } else {
-            for _ in 1 ... Int.random(in: 1 ... 5) {
-                chars.append(Character(frame: inFrame, isPreview: false))
-            }
-        }
-        
+
         setNeedsDisplay(bounds)
         // Update the "state" of the screensaver in this function
     }
@@ -67,6 +56,26 @@ class Matrix_ScreenSaverView: ScreenSaverView {
     private func drawCharacter() {
         for char in chars {
             char!.draw()
+        }
+    }
+    
+    private func onTimer(timer: Timer) {
+        var idx = 0
+        for var char in self.chars {
+            char!.move()
+            idx += 1
+            if (char!.Y < self.inFrame.minY - 100) {
+                self.chars.remove(at: idx)
+                char = nil
+            }
+        }
+        
+        if self.onPreview {
+            self.chars.append(Character(frame: self.inFrame, isPreview: true))
+        } else {
+            for _ in 1 ... Int.random(in: 1 ... 5) {
+                self.chars.append(Character(frame: self.inFrame, isPreview: false))
+            }
         }
     }
 }
@@ -135,7 +144,7 @@ class Character: NSObject {
         X += 0 // CGFloat.random(in: -10 ... 10)
         Y -= CGFloat(speed) // CGFloat.random(in: -10 ... 10)
         lifespan -= speed * 0.1
-        if (Int(lifespan) % 12 == 0 && !special) {
+        if (Int(lifespan) % 6 == 0 && !special) {
             char += String(letters.randomElement()!)
         }
     }
