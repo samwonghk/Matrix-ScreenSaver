@@ -61,18 +61,22 @@ class Matrix_ScreenSaverView: ScreenSaverView {
     
     private func onTimer(timer: Timer) {
         var idx = 0
-        for var char in self.chars {
+        for char in self.chars {
             char!.move()
             idx += 1
             if (char!.Y < self.inFrame.minY - 100) {
-                //self.chars.remove(at: idx)
-                char!.Y = CGFloat.random(in: self.inFrame.maxY ... self.inFrame.maxY + 50)
-                char = nil
+                //  self.chars.remove(at: idx)
+                char!.reset()
+                // char = nil
             }
         }
         
         if self.onPreview {
-            self.chars.append(Character(frame: self.inFrame, isPreview: true))
+            for _ in 1 ... Int.random(in: 1 ... 5) {
+                if self.chars.count <= 200 {
+                    self.chars.append(Character(frame: self.inFrame, isPreview: true))
+                }
+            }
         } else {
             for _ in 1 ... Int.random(in: 1 ... 5) {
                 if self.chars.count <= 200 {
@@ -116,6 +120,23 @@ class Character: NSObject {
     
     deinit {
 
+    }
+    
+    public func reset() {
+        X = CGFloat(Int(CGFloat.random(in: frame.minX ... frame.maxX) / CGFloat(fontSize)) * fontSize)
+        Y = CGFloat.random(in: frame.maxY ... frame.maxY + 50) // frame.maxY // frame.midY
+        speed = Float.random(in: 2 ... 12)
+        lifespan = Float.random(in: 100 ... 500)
+        totalLifespan = lifespan
+        char = ""
+        if Double.random(in: 0 ... 1) >= 0.99 {
+            char = "NEO, PICK UP THE PHONE"
+            special = true
+        } else {
+            for _ in 5 ... Int.random(in: 6 ... 20) {
+                char += String(letters.randomElement()!)
+            }
+        }
     }
     
     public func draw() {
