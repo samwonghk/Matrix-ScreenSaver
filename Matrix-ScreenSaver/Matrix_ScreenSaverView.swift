@@ -65,7 +65,8 @@ class Matrix_ScreenSaverView: ScreenSaverView {
             char!.move()
             idx += 1
             if (char!.Y < self.inFrame.minY - 100) {
-                self.chars.remove(at: idx)
+                //self.chars.remove(at: idx)
+                char!.Y = CGFloat.random(in: self.inFrame.maxY ... self.inFrame.maxY + 50)
                 char = nil
             }
         }
@@ -74,7 +75,9 @@ class Matrix_ScreenSaverView: ScreenSaverView {
             self.chars.append(Character(frame: self.inFrame, isPreview: true))
         } else {
             for _ in 1 ... Int.random(in: 1 ... 5) {
-                self.chars.append(Character(frame: self.inFrame, isPreview: false))
+                if self.chars.count <= 200 {
+                    self.chars.append(Character(frame: self.inFrame, isPreview: false))
+                }
             }
         }
     }
