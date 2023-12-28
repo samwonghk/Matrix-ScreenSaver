@@ -1,0 +1,59 @@
+{
+  "buildCommand" : "build",
+  "configuredTargets" : [
+    {
+      "guid" : "516d9f50fd553dc60d18936f393ea7142eebf36524543f48ab83544d5d45cbdd"
+    }
+  ],
+  "continueBuildingAfterErrors" : false,
+  "enableIndexBuildArena" : false,
+  "hideShellScriptEnvironment" : false,
+  "parameters" : {
+    "action" : "build",
+    "activeArchitecture" : "arm64",
+    "activeRunDestination" : {
+      "disableOnlyActiveArch" : false,
+      "platform" : "macosx",
+      "sdk" : "macosx11.3",
+      "sdkVariant" : "macos",
+      "supportedArchitectures" : [
+        "arm64e",
+        "arm64",
+        "x86_64"
+      ],
+      "targetArchitecture" : "arm64"
+    },
+    "arenaInfo" : {
+      "buildIntermediatesPath" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/builds/Build/Intermediates.noindex",
+      "buildProductsPath" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/builds/Build/Products",
+      "derivedDataPath" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/builds",
+      "indexDataStoreFolderPath" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/builds/Index/DataStore",
+      "indexEnableDataStore" : true,
+      "indexPCHPath" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/builds/Index/PrecompiledHeaders",
+      "pchPath" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/builds/Build/Intermediates.noindex/PrecompiledHeaders"
+    },
+    "configurationName" : "Release",
+    "overrides" : {
+      "commandLine" : {
+        "table" : {
+
+        }
+      },
+      "synthesized" : {
+        "table" : {
+          "ACTION" : "build",
+          "COLOR_DIAGNOSTICS" : "YES",
+          "diagnostic_message_length" : "204",
+          "ENABLE_PREVIEWS" : "NO"
+        }
+      }
+    }
+  },
+  "schemeCommand" : "launch",
+  "shouldCollectMetrics" : false,
+  "showNonLoggedProgress" : true,
+  "useDryRun" : false,
+  "useImplicitDependencies" : true,
+  "useLegacyBuildLocations" : false,
+  "useParallelTargets" : true
+}
