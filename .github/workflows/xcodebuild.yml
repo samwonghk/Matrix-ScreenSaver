@@ -53,7 +53,11 @@ jobs:
           zip -r Matrix-ScreenSaver.zip Matrix-ScreenSaver.saver
       # ls /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build
       # zip -r ./Release/Matrix-ScreenSaver.zip ./Release/Matrix-ScreenSaver.saver
-      
+
+      - name: Submit to Notary Service
+        run: |
+          xcrun notarytool submit --apple-id ${{ vars.APPLE_ID }} --password ${{ secrets.APP_PASSWORD }} --team-id ${{ vars.TEAM_ID }} Matrix-ScreenSaver.zip           
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
