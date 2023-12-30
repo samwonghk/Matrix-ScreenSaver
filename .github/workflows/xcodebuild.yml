@@ -45,7 +45,7 @@ jobs:
       - name: Codesign executable
         run: |
           cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
-          /usr/bin/codesign --force -s "Developer ID Application: aSpatial Consultancy Limited (99V5462P23)" --keychain login.keychain Matrix-ScreenSaver.saver -v
+          /usr/bin/codesign --force -s "${{ vars.SIGNING_PROFILE }}" --keychain login.keychain Matrix-ScreenSaver.saver -v
 
       - name: Zip File
         run: |
@@ -53,7 +53,12 @@ jobs:
           zip -r Matrix-ScreenSaver.zip Matrix-ScreenSaver.saver
       # ls /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build
       # zip -r ./Release/Matrix-ScreenSaver.zip ./Release/Matrix-ScreenSaver.saver
-      
+
+      - name: Submit to Notary Service
+        run: |
+          cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
+          xcrun notarytool submit --apple-id ${{ vars.APPLE_ID }} --password ${{ secrets.APP_PASSWORD }} --team-id ${{ vars.TEAM_ID }} Matrix-ScreenSaver.zip           
+
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
