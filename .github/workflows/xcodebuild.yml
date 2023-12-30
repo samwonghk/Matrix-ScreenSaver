@@ -42,10 +42,10 @@ jobs:
           destination: platform=macOS
           action: build
       
-      # - name: Codesign executable
-      #   run: |
-      #     cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
-      #     /usr/bin/codesign --force -s ${{ vars.SIGNING_PROFILE }} --keychain login.keychain Matrix-ScreenSaver.saver -v
+      - name: Codesign executable
+        run: |
+          cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
+          /usr/bin/codesign --force -s ${{ vars.SIGNING_PROFILE }} --keychain login.keychain Matrix-ScreenSaver.saver -v
 
       - name: Zip File
         run: |
