@@ -56,6 +56,7 @@ jobs:
 
       - name: Submit to Notary Service
         run: |
+          cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
           xcrun notarytool submit --apple-id ${{ vars.APPLE_ID }} --password ${{ secrets.APP_PASSWORD }} --team-id ${{ vars.TEAM_ID }} Matrix-ScreenSaver.zip           
 
       - name: Create Release
