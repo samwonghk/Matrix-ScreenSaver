@@ -25,7 +25,8 @@ class Matrix_ScreenSaverView: ScreenSaverView {
     }
     
     deinit {
-       timer = nil
+        timer = nil
+        chars.removeAll()
     }
 
     @available(*, unavailable)
@@ -35,7 +36,7 @@ class Matrix_ScreenSaverView: ScreenSaverView {
 
     // MARK: - Lifecycle
     override func draw(_ rect: NSRect) {
-        drawBackground(.black)
+        // drawBackground(.black)
         drawCharacter()
         // Draw a single frame in this function
     }
@@ -104,7 +105,7 @@ class Character: NSObject {
         X = CGFloat(Int(CGFloat.random(in: frame.minX ... frame.maxX) / CGFloat(fontSize)) * fontSize)
         Y = CGFloat.random(in: frame.maxY ... frame.maxY + 50) // frame.maxY // frame.midY
         speed = Float.random(in: 2 ... 12)
-        lifespan = Float.random(in: 100 ... 500)
+        lifespan = Float.random(in: 300 ... 500)
         totalLifespan = lifespan
         if Double.random(in: 0 ... 1) >= 0.99 {
             char = "NEO, PICK UP THE PHONE"
@@ -126,7 +127,7 @@ class Character: NSObject {
         X = CGFloat(Int(CGFloat.random(in: frame.minX ... frame.maxX) / CGFloat(fontSize)) * fontSize)
         Y = CGFloat.random(in: frame.maxY ... frame.maxY + 50) // frame.maxY // frame.midY
         speed = Float.random(in: 2 ... 12)
-        lifespan = Float.random(in: 100 ... 500)
+        lifespan = Float.random(in: 300 ... 500)
         totalLifespan = lifespan
         char = ""
         if Double.random(in: 0 ... 1) >= 0.99 {
