@@ -45,7 +45,7 @@ jobs:
       - name: Codesign executable
         run: |
           cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
-          /usr/bin/codesign --force -s "Apple Distribution: aSpatial Consultancy Limited (99V5462P23)" --keychain login.keychain Matrix-ScreenSaver.saver -v
+          /usr/bin/codesign --force -s "Developer ID Application: aSpatial Consultancy Limited (99V5462P23)" --keychain login.keychain Matrix-ScreenSaver.saver -v
 
       - name: Zip File
         run: |
