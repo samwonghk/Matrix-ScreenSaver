@@ -267,7 +267,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Distribution: aSpatial Consultancy Limited (99V5462P23)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution: aSpatial Consultancy Limited (99V5462P23)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
@@ -293,7 +293,7 @@
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Distribution: aSpatial Consultancy Limited (99V5462P23)";
-				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Apple Distribution: aSpatial Consultancy Limited (99V5462P23)";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
 				DEAD_CODE_STRIPPING = YES;
