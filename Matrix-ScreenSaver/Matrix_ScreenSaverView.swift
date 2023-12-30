@@ -3,6 +3,7 @@
 //  Matrix-ScreenSaver
 //
 //  Created by Sam Wong on 11/5/2021.
+//  Updated by Sam Wong on 30/12/2023.
 //
 
 import ScreenSaver
@@ -21,7 +22,7 @@ class Matrix_ScreenSaverView: ScreenSaverView {
         ]
         onPreview = isPreview
         super.init(frame: inFrame, isPreview: isPreview)
-        timer = Timer.scheduledTimer(withTimeInterval: 0.03, repeats: true, block: onTimer)
+        timer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true, block: onTimer)
     }
     
     deinit {
