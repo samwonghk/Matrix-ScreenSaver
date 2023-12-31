@@ -75,13 +75,13 @@ class Matrix_ScreenSaverView: ScreenSaverView {
         
         if self.onPreview {
             for _ in 1 ... Int.random(in: 1 ... 5) {
-                if self.chars.count <= 200 {
+                if self.chars.count <= 100 {
                     self.chars.append(Character(frame: self.inFrame, isPreview: true))
                 }
             }
         } else {
             for _ in 1 ... Int.random(in: 1 ... 5) {
-                if self.chars.count <= 200 {
+                if self.chars.count <= 100 {
                     self.chars.append(Character(frame: self.inFrame, isPreview: false))
                 }
             }
@@ -142,6 +142,9 @@ class Character: NSObject {
     }
     
     public func draw() {
+        if (self.Y < self.frame.minY) {
+            return
+        }
         var idx = char.count
         for letter in char.reversed() {
             let attributes: [NSAttributedString.Key: Any] = [
