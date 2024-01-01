@@ -50,6 +50,7 @@ class Matrix_ScreenSaverView: ScreenSaverView {
     }
     
     deinit {
+        timer?.invalidate()
         timer = nil
         chars.removeAll()
     }
@@ -100,18 +101,20 @@ class Matrix_ScreenSaverView: ScreenSaverView {
         
         for char in self.chars {
             char!.move()
-            idx += 1
             if (char!.Y < self.inFrame.minY - 100) {
-                char!.reset()
-                if char!.special == true {
-                    char!.char = message
-                }
+//                char!.reset()
+//                if char!.special == true {
+//                    char!.char = message
+//                }
+                self.chars.remove(at: idx)
+            } else {
+                idx += 1
             }
         }
         
         if self.onPreview {
             for _ in 1 ... Int.random(in: 1 ... 5) {
-                if self.chars.count <= noOfLines {
+                if self.chars.count < noOfLines {
                     let character = Character(frame: self.inFrame, isPreview: true)
                     if character.special == true {
                         character.char = message
@@ -121,7 +124,7 @@ class Matrix_ScreenSaverView: ScreenSaverView {
             }
         } else {
             for _ in 1 ... Int.random(in: 1 ... 5) {
-                if self.chars.count <= noOfLines {
+                if self.chars.count < noOfLines {
                     let character = Character(frame: self.inFrame, isPreview: false)
                     if character.special == true {
                         character.char = message
