@@ -94,7 +94,7 @@ class Matrix_ScreenSaverView: ScreenSaverView {
         if (screenSaverDefaults.string(forKey: "message") != nil) {
             message = screenSaverDefaults.string(forKey: "message")!
         }
-
+        
         if (screenSaverDefaults.integer(forKey: "noOfLines") != 0) {
             noOfLines = screenSaverDefaults.integer(forKey: "noOfLines")
         }
@@ -134,10 +134,6 @@ class Matrix_ScreenSaverView: ScreenSaverView {
             }
         }
     }
-    
-    @IBAction func buttonCancelClicked(_ sender: NSButton) {
-    }
-    
 }
 
 class Character: NSObject {
@@ -234,12 +230,12 @@ class ConfigureWindowController: NSObject {
     
     @IBOutlet weak var textLines: NSTextField!
     @IBOutlet weak var textMesssage: NSTextField!
-    
+    @IBOutlet weak var stepper: NSStepper!
     @IBOutlet var window: NSWindow?
     
     var screenSaverDefaults: ScreenSaverDefaults = ScreenSaverDefaults(forModuleWithName: Bundle.main.bundleIdentifier!) ?? ScreenSaverDefaults()
-    var message: String = "NEO!"
-    var noOfLines: Int = 10
+    
+    var configuration = Configuration()
     
     override init() {
         super.init()
@@ -247,15 +243,15 @@ class ConfigureWindowController: NSObject {
         myBundle.loadNibNamed("ConfigureWindow", owner: self, topLevelObjects: nil)
         
         if (screenSaverDefaults.string(forKey: "message") != nil) {
-            message = screenSaverDefaults.string(forKey: "message")!
+            configuration.message = screenSaverDefaults.string(forKey: "message")!
         }
         
         if (screenSaverDefaults.integer(forKey: "noOfLines") > 0) {
-            noOfLines = screenSaverDefaults.integer(forKey: "noOfLines")
+            configuration.noOfLines = screenSaverDefaults.integer(forKey: "noOfLines")
         }
         
-        textLines.integerValue = noOfLines
-        textMesssage.stringValue = message
+        textLines.integerValue = configuration.noOfLines
+        textMesssage.stringValue = configuration.message
     }
     
     override class func awakeFromNib() {
@@ -268,14 +264,26 @@ class ConfigureWindowController: NSObject {
     
     @IBAction func buttonSaveClicked(_ sender: Any) {
         if textLines.integerValue > 0 {
-            noOfLines = textLines.integerValue
+            configuration.noOfLines = textLines.integerValue
         }
-        message = textMesssage.stringValue
+        configuration.message = textMesssage.stringValue
         
-        screenSaverDefaults.setValue(noOfLines, forKey: "noOfLines")
-        screenSaverDefaults.setValue(message, forKey: "message")
+        screenSaverDefaults.setValue(configuration.noOfLines, forKey: "noOfLines")
+        screenSaverDefaults.setValue(configuration.message, forKey: "message")
         screenSaverDefaults.synchronize()
         
         window?.sheetParent?.endSheet(window!)
     }
+    @IBAction func textLinesChanged(_ sender: Any) {
+        let textField = sender as! NSTextField
+        if textField.integerValue > 150 {
+            textField.integerValue = 150
+        }
+        stepper.integerValue = textField.integerValue
+    }
+}
+
+class Configuration {
+    var noOfLines: Int = 0
+    var message: String = ""
 }

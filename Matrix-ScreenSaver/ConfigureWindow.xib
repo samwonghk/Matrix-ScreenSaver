@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="ConfigureWindowController" customModule="Matrix_ScreenSaver" customModuleProvider="target">
             <connections>
+                <outlet property="stepper" destination="3Th-bw-pne" id="tTd-r3-Cne"/>
                 <outlet property="textLines" destination="LTn-4d-afd" id="a2V-gm-pfk"/>
                 <outlet property="textMesssage" destination="sib-xa-heA" id="W1y-pb-KUT"/>
                 <outlet property="window" destination="QvC-M9-y7g" id="5qR-Ec-fym"/>
@@ -38,7 +39,7 @@ Gw
                         </connections>
                     </button>
                     <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZDj-Yy-By5">
-                        <rect key="frame" x="398" y="13" width="64" height="32"/>
+                        <rect key="frame" x="391" y="13" width="76" height="32"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wPS-hy-tdX">
                             <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -49,13 +50,16 @@ Gw
                         </connections>
                     </button>
                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="LTn-4d-afd">
-                        <rect key="frame" x="101" y="100" width="96" height="21"/>
+                        <rect key="frame" x="101" y="100" width="92" height="21"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" borderStyle="bezel" drawsBackground="YES" id="GkG-1N-eHa">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
+                        <connections>
+                            <action selector="textLinesChanged:" target="-2" id="qPz-RY-fDR"/>
+                        </connections>
                     </textField>
                     <textField focusRingType="none" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="sib-xa-heA">
                         <rect key="frame" x="101" y="69" width="354" height="21"/>
@@ -84,9 +88,18 @@ Gw
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <stepper horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3Th-bw-pne">
+                        <rect key="frame" x="193" y="96" width="19" height="28"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <stepperCell key="cell" continuous="YES" alignment="left" maxValue="150" id="ybv-mw-CVd"/>
+                        <connections>
+                            <binding destination="-2" name="value" keyPath="textLines.integerValue" id="wgq-CJ-wnx"/>
+                        </connections>
+                    </stepper>
                 </subviews>
             </view>
             <point key="canvasLocation" x="63" y="-147.5"/>
         </window>
+        <userDefaultsController representsSharedInstance="YES" id="U0b-D8-F4k"/>
     </objects>
 </document>
