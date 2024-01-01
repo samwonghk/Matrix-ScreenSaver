@@ -9,12 +9,14 @@
 /* Begin PBXBuildFile section */
 		6003FD25264C168A00ADD944 /* quarantine.sh in Resources */ = {isa = PBXBuildFile; fileRef = 6003FD24264C168A00ADD944 /* quarantine.sh */; };
 		60335291264AEF300043A1AC /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 60335290264AEF300043A1AC /* readme.md */; };
+		6044EA7C2B423731003FE4AE /* ConfigureWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6044EA7B2B423731003FE4AE /* ConfigureWindow.xib */; };
 		60AEC172264A645000DA9DD6 /* Matrix_ScreenSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AEC171264A645000DA9DD6 /* Matrix_ScreenSaverView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		6003FD24264C168A00ADD944 /* quarantine.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = quarantine.sh; sourceTree = "<group>"; };
 		60335290264AEF300043A1AC /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
+		6044EA7B2B423731003FE4AE /* ConfigureWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigureWindow.xib; sourceTree = "<group>"; };
 		60AEC164264A63ED00DA9DD6 /* Matrix-ScreenSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Matrix-ScreenSaver.saver"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AEC16B264A63ED00DA9DD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60AEC171264A645000DA9DD6 /* Matrix_ScreenSaverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix_ScreenSaverView.swift; sourceTree = "<group>"; };
@@ -54,6 +56,7 @@
 				6003FD24264C168A00ADD944 /* quarantine.sh */,
 				60AEC16B264A63ED00DA9DD6 /* Info.plist */,
 				60AEC171264A645000DA9DD6 /* Matrix_ScreenSaverView.swift */,
+				6044EA7B2B423731003FE4AE /* ConfigureWindow.xib */,
 			);
 			path = "Matrix-ScreenSaver";
 			sourceTree = "<group>";
@@ -100,7 +103,7 @@
 				TargetAttributes = {
 					60AEC163264A63ED00DA9DD6 = {
 						CreatedOnToolsVersion = 12.5;
-						LastSwiftMigration = 1250;
+						LastSwiftMigration = 1510;
 					};
 				};
 			};
@@ -127,6 +130,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6044EA7C2B423731003FE4AE /* ConfigureWindow.xib in Resources */,
 				6003FD25264C168A00ADD944 /* quarantine.sh in Resources */,
 				60335291264AEF300043A1AC /* readme.md in Resources */,
 			);
@@ -270,6 +274,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 99V5462P23;
 				INFOPLIST_FILE = "Matrix-ScreenSaver/Info.plist";
@@ -280,6 +285,7 @@
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "hk.com.aspatial.Matrix-ScreenSaver";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -296,6 +302,7 @@
 				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Developer ID Application";
 				CODE_SIGN_STYLE = Manual;
 				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1.3;
 				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = 99V5462P23;
 				INFOPLIST_FILE = "Matrix-ScreenSaver/Info.plist";
@@ -306,6 +313,7 @@
 					"@loader_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = "$(RECOMMENDED_MACOSX_DEPLOYMENT_TARGET)";
+				MARKETING_VERSION = 1.3;
 				PRODUCT_BUNDLE_IDENTIFIER = "hk.com.aspatial.Matrix-ScreenSaver";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

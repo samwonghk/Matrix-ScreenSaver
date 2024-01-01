@@ -7,12 +7,26 @@
 //
 
 import ScreenSaver
+import Cocoa
 
 class Matrix_ScreenSaverView: ScreenSaverView {
     var chars: [Character?]
     var onPreview: Bool
     var inFrame: NSRect
     var timer: Timer? = nil
+    var noOfLines: Int = 100
+    var message: String = "NEO, PICK UP THE PHONE"
+    
+    var screenSaverDefaults: ScreenSaverDefaults
+
+    lazy var configureWindowController: ConfigureWindowController = ConfigureWindowController()
+    
+    override var hasConfigureSheet: Bool { get { true }}
+    
+    override var configureSheet: NSWindow? { get {
+
+        return configureWindowController.window
+    }}
     
     // MARK: - Initialization
     override init?(frame: NSRect, isPreview: Bool) {
@@ -21,8 +35,18 @@ class Matrix_ScreenSaverView: ScreenSaverView {
             // Character(frame: inFrame, isPreview: isPreview)
         ]
         onPreview = isPreview
+        screenSaverDefaults = ScreenSaverDefaults(forModuleWithName: Bundle.main.bundleIdentifier!) ?? ScreenSaverDefaults()
+        
         super.init(frame: inFrame, isPreview: isPreview)
         timer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true, block: onTimer)
+        
+        if (screenSaverDefaults.string(forKey: "message") != nil) {
+            message = screenSaverDefaults.string(forKey: "message")!
+        }
+
+        if (screenSaverDefaults.integer(forKey: "noOfLines") != 0) {
+            noOfLines = screenSaverDefaults.integer(forKey: "noOfLines")
+        }
     }
     
     deinit {
@@ -48,7 +72,7 @@ class Matrix_ScreenSaverView: ScreenSaverView {
         setNeedsDisplay(bounds)
         // Update the "state" of the screensaver in this function
     }
-
+    
     private func drawBackground(_ color: NSColor) {
         let background = NSBezierPath(rect: bounds)
         color.setFill()
@@ -63,30 +87,54 @@ class Matrix_ScreenSaverView: ScreenSaverView {
     
     private func onTimer(timer: Timer) {
         var idx = 0
+        
+        screenSaverDefaults.synchronize()
+        
+        if (screenSaverDefaults.string(forKey: "message") != nil) {
+            message = screenSaverDefaults.string(forKey: "message")!
+        }
+
+        if (screenSaverDefaults.integer(forKey: "noOfLines") != 0) {
+            noOfLines = screenSaverDefaults.integer(forKey: "noOfLines")
+        }
+        
         for char in self.chars {
             char!.move()
             idx += 1
             if (char!.Y < self.inFrame.minY - 100) {
-                //  self.chars.remove(at: idx)
                 char!.reset()
-                // char = nil
+                if char!.special == true {
+                    char!.char = message
+                }
             }
         }
         
         if self.onPreview {
             for _ in 1 ... Int.random(in: 1 ... 5) {
-                if self.chars.count <= 100 {
-                    self.chars.append(Character(frame: self.inFrame, isPreview: true))
+                if self.chars.count <= noOfLines {
+                    let character = Character(frame: self.inFrame, isPreview: true)
+                    if character.special == true {
+                        character.char = message
+                    }
+                    self.chars.append(character)
                 }
             }
         } else {
             for _ in 1 ... Int.random(in: 1 ... 5) {
-                if self.chars.count <= 100 {
-                    self.chars.append(Character(frame: self.inFrame, isPreview: false))
+                if self.chars.count <= noOfLines {
+                    let character = Character(frame: self.inFrame, isPreview: false)
+                    if character.special == true {
+                        character.char = message
+                    }
+                    self.chars.append(character)
                 }
             }
         }
     }
+    
+    @IBAction func buttonCancelClicked(_ sender: NSButton) {
+    }
+    
 }
 
 class Character: NSObject {
@@ -98,7 +146,7 @@ class Character: NSObject {
     public var speed: Float = 10
     private var frame: NSRect
     private var totalLifespan: Float = 50
-    private var special: Bool = false
+    public var special: Bool = false
     private var isPreview: Bool = false
     private let fontSize: Int = 12
     
@@ -109,7 +157,7 @@ class Character: NSObject {
         lifespan = Float.random(in: 300 ... 500)
         totalLifespan = lifespan
         if Double.random(in: 0 ... 1) >= 0.99 {
-            char = "NEO, PICK UP THE PHONE"
+            char = ""
             special = true
         } else {
             for _ in 5 ... Int.random(in: 6 ... 20) {
@@ -132,7 +180,7 @@ class Character: NSObject {
         totalLifespan = lifespan
         char = ""
         if Double.random(in: 0 ... 1) >= 0.99 {
-            char = "NEO, PICK UP THE PHONE"
+            char = ""
             special = true
         } else {
             for _ in 5 ... Int.random(in: 6 ... 20) {
@@ -176,5 +224,55 @@ class Character: NSObject {
         if (Int(lifespan) % 6 == 0 && !special) {
             char += String(letters.randomElement()!)
         }
+    }
+}
+
+class ConfigureWindowController: NSObject {
+    
+    @IBOutlet weak var textLines: NSTextField!
+    @IBOutlet weak var textMesssage: NSTextField!
+    
+    @IBOutlet var window: NSWindow?
+    
+    var screenSaverDefaults: ScreenSaverDefaults = ScreenSaverDefaults(forModuleWithName: Bundle.main.bundleIdentifier!) ?? ScreenSaverDefaults()
+    var message: String = "NEO!"
+    var noOfLines: Int = 10
+    
+    override init() {
+        super.init()
+        let myBundle = Bundle(for: ConfigureWindowController.self)
+        myBundle.loadNibNamed("ConfigureWindow", owner: self, topLevelObjects: nil)
+        
+        if (screenSaverDefaults.string(forKey: "message") != nil) {
+            message = screenSaverDefaults.string(forKey: "message")!
+        }
+        
+        if (screenSaverDefaults.integer(forKey: "noOfLines") > 0) {
+            noOfLines = screenSaverDefaults.integer(forKey: "noOfLines")
+        }
+        
+        textLines.integerValue = noOfLines
+        textMesssage.stringValue = message
+    }
+    
+    override class func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    @IBAction func buttonCancelClicked(_ sender: Any) {
+        window?.sheetParent?.endSheet(window!)
+    }
+    
+    @IBAction func buttonSaveClicked(_ sender: Any) {
+        if textLines.integerValue > 0 {
+            noOfLines = textLines.integerValue
+        }
+        message = textMesssage.stringValue
+        
+        screenSaverDefaults.setValue(noOfLines, forKey: "noOfLines")
+        screenSaverDefaults.setValue(message, forKey: "message")
+        screenSaverDefaults.synchronize()
+        
+        window?.sheetParent?.endSheet(window!)
     }
 }
