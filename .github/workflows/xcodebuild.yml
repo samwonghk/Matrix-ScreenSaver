@@ -1,0 +1,82 @@
+# This is a basic workflow to help you get started with Actions
+
+name: xcodebuild
+
+# Controls when the action will run. 
+on:
+  # Triggers the workflow on push or pull request events but only for the main branch
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: macOS-latest
+
+    # Steps represent a sequence of tasks that will be executed as part of the job
+    steps:
+      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      - name: Check out Code
+        uses: actions/checkout@v2
+      
+      - name: Import Certificate
+        uses: apple-actions/import-codesign-certs@v1
+        with: 
+          p12-file-base64: ${{ secrets.SIGNING_CERTIFICATE_ASPATIAL_P12 }}
+          p12-password: ${{ secrets.SIGNING_CERTIFICATE_ASPATIAL_P12_PASSWORD }}
+
+      - name: Build File
+        id: build_file
+        uses: sersoft-gmbh/xcodebuild-action@v1
+        with:
+          project: Matrix-ScreenSaver.xcodeproj
+          scheme: Matrix-ScreenSaver
+          derived-data-path: build
+          destination: platform=macOS
+          action: build
+      
+      - name: Codesign executable
+        run: |
+          cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
+          /usr/bin/codesign --force -s "${{ vars.SIGNING_PROFILE }}" --keychain login.keychain Matrix-ScreenSaver.saver -v
+
+      - name: Zip File
+        run: |
+          cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
+          zip -r Matrix-ScreenSaver.zip Matrix-ScreenSaver.saver
+      # ls /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build
+      # zip -r ./Release/Matrix-ScreenSaver.zip ./Release/Matrix-ScreenSaver.saver
+
+      - name: Submit to Notary Service
+        run: |
+          cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
+          xcrun notarytool submit --apple-id ${{ vars.APPLE_ID }} --password ${{ secrets.APP_PASSWORD }} --team-id ${{ vars.TEAM_ID }} Matrix-ScreenSaver.zip           
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.run_id }}
+          release_name: Release ${{ github.run_id }}
+          draft: false
+          prerelease: false
+          
+      - name: Upload Release Asset
+        id: upload-release-asset 
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
+          asset_path: /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/Matrix-ScreenSaver.zip
+          asset_name: Matrix-ScreenSaver.zip
+          asset_content_type: application/zip
