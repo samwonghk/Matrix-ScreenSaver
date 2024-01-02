@@ -38,20 +38,20 @@ class Matrix_ScreenSaverView: ScreenSaverView {
         screenSaverDefaults = ScreenSaverDefaults(forModuleWithName: Bundle.main.bundleIdentifier!) ?? ScreenSaverDefaults()
         
         super.init(frame: inFrame, isPreview: isPreview)
-        timer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true, block: onTimer)
+//        timer = Timer.scheduledTimer(withTimeInterval: 0.02, repeats: true, block: onTimer)
         
-        if (screenSaverDefaults.string(forKey: "message") != nil) {
-            message = screenSaverDefaults.string(forKey: "message")!
-        }
-
-        if (screenSaverDefaults.integer(forKey: "noOfLines") != 0) {
-            noOfLines = screenSaverDefaults.integer(forKey: "noOfLines")
-        }
+//        if (screenSaverDefaults.string(forKey: "message") != nil) {
+//            message = screenSaverDefaults.string(forKey: "message")!
+//        }
+//
+//        if (screenSaverDefaults.integer(forKey: "noOfLines") != 0) {
+//            noOfLines = screenSaverDefaults.integer(forKey: "noOfLines")
+//        }
     }
     
     deinit {
-        timer?.invalidate()
-        timer = nil
+//        timer?.invalidate()
+//        timer = nil
         chars.removeAll()
     }
 
@@ -69,7 +69,7 @@ class Matrix_ScreenSaverView: ScreenSaverView {
 
     override func animateOneFrame() {
         super.animateOneFrame()
-
+        updateChars()
         setNeedsDisplay(bounds)
         // Update the "state" of the screensaver in this function
     }
@@ -87,6 +87,10 @@ class Matrix_ScreenSaverView: ScreenSaverView {
     }
     
     private func onTimer(timer: Timer) {
+//        updateChars()
+    }
+    
+    private func updateChars() {
         var idx = 0
         
         screenSaverDefaults.synchronize()
