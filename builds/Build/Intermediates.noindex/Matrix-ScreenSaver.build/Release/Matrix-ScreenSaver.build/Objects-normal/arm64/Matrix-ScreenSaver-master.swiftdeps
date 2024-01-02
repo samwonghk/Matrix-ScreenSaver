@@ -1,5 +1,0 @@
-version: "Apple Swift version 5.4 (swiftlang-1205.0.26.9 clang-1205.0.19.55)"
-options: "263de063f08334cb0ae1f9d7172bf82b"
-build_time: [1620825327, 896900000]
-inputs:
-  "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/Matrix-ScreenSaver/Matrix_ScreenSaverView.swift": [1620750786, 27282886]
