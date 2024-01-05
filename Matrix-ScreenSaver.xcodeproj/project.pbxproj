@@ -7,16 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		6003FD25264C168A00ADD944 /* quarantine.sh in Resources */ = {isa = PBXBuildFile; fileRef = 6003FD24264C168A00ADD944 /* quarantine.sh */; };
 		60335291264AEF300043A1AC /* readme.md in Resources */ = {isa = PBXBuildFile; fileRef = 60335290264AEF300043A1AC /* readme.md */; };
 		6044EA7C2B423731003FE4AE /* ConfigureWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6044EA7B2B423731003FE4AE /* ConfigureWindow.xib */; };
+		6052E22F2B488CCB0054881E /* shell-scripts in Resources */ = {isa = PBXBuildFile; fileRef = 6052E22E2B488CCB0054881E /* shell-scripts */; };
 		60AEC172264A645000DA9DD6 /* Matrix_ScreenSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60AEC171264A645000DA9DD6 /* Matrix_ScreenSaverView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		6003FD24264C168A00ADD944 /* quarantine.sh */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.script.sh; path = quarantine.sh; sourceTree = "<group>"; };
 		60335290264AEF300043A1AC /* readme.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = readme.md; sourceTree = "<group>"; };
 		6044EA7B2B423731003FE4AE /* ConfigureWindow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ConfigureWindow.xib; sourceTree = "<group>"; };
+		6052E22E2B488CCB0054881E /* shell-scripts */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "shell-scripts"; sourceTree = "<group>"; };
 		60AEC164264A63ED00DA9DD6 /* Matrix-ScreenSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Matrix-ScreenSaver.saver"; sourceTree = BUILT_PRODUCTS_DIR; };
 		60AEC16B264A63ED00DA9DD6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		60AEC171264A645000DA9DD6 /* Matrix_ScreenSaverView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Matrix_ScreenSaverView.swift; sourceTree = "<group>"; };
@@ -53,7 +53,7 @@
 		60AEC166264A63ED00DA9DD6 /* Matrix-ScreenSaver */ = {
 			isa = PBXGroup;
 			children = (
-				6003FD24264C168A00ADD944 /* quarantine.sh */,
+				6052E22E2B488CCB0054881E /* shell-scripts */,
 				60AEC16B264A63ED00DA9DD6 /* Info.plist */,
 				60AEC171264A645000DA9DD6 /* Matrix_ScreenSaverView.swift */,
 				6044EA7B2B423731003FE4AE /* ConfigureWindow.xib */,
@@ -131,7 +131,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6044EA7C2B423731003FE4AE /* ConfigureWindow.xib in Resources */,
-				6003FD25264C168A00ADD944 /* quarantine.sh in Resources */,
+				6052E22F2B488CCB0054881E /* shell-scripts in Resources */,
 				60335291264AEF300043A1AC /* readme.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
