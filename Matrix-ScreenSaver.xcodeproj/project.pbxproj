@@ -36,6 +36,7 @@
 		60AEC15A264A63ED00DA9DD6 = {
 			isa = PBXGroup;
 			children = (
+				6052E22E2B488CCB0054881E /* shell-scripts */,
 				60335290264AEF300043A1AC /* readme.md */,
 				60AEC166264A63ED00DA9DD6 /* Matrix-ScreenSaver */,
 				60AEC165264A63ED00DA9DD6 /* Products */,
@@ -53,7 +54,6 @@
 		60AEC166264A63ED00DA9DD6 /* Matrix-ScreenSaver */ = {
 			isa = PBXGroup;
 			children = (
-				6052E22E2B488CCB0054881E /* shell-scripts */,
 				60AEC16B264A63ED00DA9DD6 /* Info.plist */,
 				60AEC171264A645000DA9DD6 /* Matrix_ScreenSaverView.swift */,
 				6044EA7B2B423731003FE4AE /* ConfigureWindow.xib */,
