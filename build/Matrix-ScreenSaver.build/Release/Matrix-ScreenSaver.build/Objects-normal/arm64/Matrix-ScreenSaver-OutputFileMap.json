@@ -1,0 +1,16 @@
+{
+  "" : {
+    "const-values" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/build/Matrix-ScreenSaver.build/Release/Matrix-ScreenSaver.build/Objects-normal/arm64/Matrix-ScreenSaver-primary.swiftconstvalues",
+    "dependencies" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/build/Matrix-ScreenSaver.build/Release/Matrix-ScreenSaver.build/Objects-normal/arm64/Matrix-ScreenSaver-primary.d",
+    "diagnostics" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/build/Matrix-ScreenSaver.build/Release/Matrix-ScreenSaver.build/Objects-normal/arm64/Matrix-ScreenSaver-primary.dia",
+    "emit-module-dependencies" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/build/Matrix-ScreenSaver.build/Release/Matrix-ScreenSaver.build/Objects-normal/arm64/Matrix-ScreenSaver-primary-emit-module.d",
+    "emit-module-diagnostics" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/build/Matrix-ScreenSaver.build/Release/Matrix-ScreenSaver.build/Objects-normal/arm64/Matrix-ScreenSaver-primary-emit-module.dia",
+    "pch" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/build/Matrix-ScreenSaver.build/Release/Matrix-ScreenSaver.build/Objects-normal/arm64/Matrix-ScreenSaver-primary-Bridging-header.pch",
+    "swift-dependencies" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/build/Matrix-ScreenSaver.build/Release/Matrix-ScreenSaver.build/Objects-normal/arm64/Matrix-ScreenSaver-primary.swiftdeps"
+  },
+  "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/Matrix-ScreenSaver/Matrix_ScreenSaverView.swift" : {
+    "index-unit-output-path" : "/Matrix-ScreenSaver.build/Release/Matrix-ScreenSaver.build/Objects-normal/arm64/Matrix_ScreenSaverView.o",
+    "llvm-bc" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/build/Matrix-ScreenSaver.build/Release/Matrix-ScreenSaver.build/Objects-normal/arm64/Matrix_ScreenSaverView.bc",
+    "object" : "/Users/samwonghk/Documents/swift-projects/Matrix-ScreenSaver/build/Matrix-ScreenSaver.build/Release/Matrix-ScreenSaver.build/Objects-normal/arm64/Matrix_ScreenSaverView.o"
+  }
+}
