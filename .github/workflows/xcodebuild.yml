@@ -44,12 +44,12 @@ jobs:
       - name: Build File
         run: |
           cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver
+          ls
           xcodebuild -project "Matrix-ScreenSaver.xcodeproj" -scheme "Matrix-ScreenSaver" -destination "generic/platform=macOS" -derivedDataPath build -configuration Release build CODE_SIGNING_ALLOWED=NO
       
       - name: Codesign executable
         run: |
           cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
-          ls
           /usr/bin/codesign --force -s "${{ vars.SIGNING_PROFILE }}" --keychain login.keychain Matrix-ScreenSaver.saver -
 
       - name: Zip File
