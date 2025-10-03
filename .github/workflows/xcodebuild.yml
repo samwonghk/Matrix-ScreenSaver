@@ -49,6 +49,7 @@ jobs:
       - name: Codesign executable
         run: |
           cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
+          ls
           /usr/bin/codesign --force -s "${{ vars.SIGNING_PROFILE }}" --keychain login.keychain Matrix-ScreenSaver.saver -
 
       - name: Zip File
