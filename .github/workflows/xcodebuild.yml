@@ -34,7 +34,7 @@ jobs:
 
       - name: Build File
         id: build_file
-        uses: sersoft-gmbh/xcodebuild-action@v1
+        uses: sersoft-gmbh/xcodebuild-action@v3
         with:
           project: Matrix-ScreenSaver.xcodeproj
           scheme: Matrix-ScreenSaver
