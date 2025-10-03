@@ -32,6 +32,10 @@ jobs:
           p12-file-base64: ${{ secrets.SIGNING_CERTIFICATE_ASPATIAL_P12 }}
           p12-password: ${{ secrets.SIGNING_CERTIFICATE_ASPATIAL_P12_PASSWORD }}
 
+      - name: Show Path
+        run: |
+          pwd
+          ls
       # - name: Build File
       #   id: build_file
       #   uses: sersoft-gmbh/xcodebuild-action@v3
@@ -44,7 +48,6 @@ jobs:
       - name: Build File
         run: |
           cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver
-          ls
           xcodebuild -project "Matrix-ScreenSaver.xcodeproj" -scheme "Matrix-ScreenSaver" -destination "generic/platform=macOS" -derivedDataPath build -configuration Release build CODE_SIGNING_ALLOWED=NO
       
       - name: Codesign executable
