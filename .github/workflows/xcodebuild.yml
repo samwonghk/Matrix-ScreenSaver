@@ -44,23 +44,23 @@ jobs:
       - name: Build File
         run: |
           cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver
-          xcodebuild -project "Matrix-ScreenSaver.xcodeproj" -scheme "Matrix-ScreenSaver" -destination "generic/platform=macOS" -configuration Release build CODE_SIGNING_ALLOWED=NO
+          xcodebuild -project "Matrix-ScreenSaver.xcodeproj" -scheme "Matrix-ScreenSaver" -destination "generic/platform=macOS" -derivedDataPath build -configuration Release build CODE_SIGNING_ALLOWED=NO
       
       - name: Codesign executable
         run: |
-          cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/Build/Products/Release/
+          cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
           /usr/bin/codesign --force -s "${{ vars.SIGNING_PROFILE }}" --keychain login.keychain Matrix-ScreenSaver.saver -
 
       - name: Zip File
         run: |
-          cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/Build/Products/Release/
+          cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
           zip -r Matrix-ScreenSaver.zip Matrix-ScreenSaver.saver
       # ls /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build
       # zip -r ./Release/Matrix-ScreenSaver.zip ./Release/Matrix-ScreenSaver.saver
 
       - name: Submit to Notary Service
         run: |
-          cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/Build/Products/Release/
+          cd /Users/runner/work/Matrix-ScreenSaver/Matrix-ScreenSaver/build/Build/Products/Release/
           xcrun notarytool submit --apple-id ${{ vars.APPLE_ID }} --password ${{ secrets.APP_PASSWORD }} --team-id ${{ vars.TEAM_ID }} Matrix-ScreenSaver.zip           
 
       - name: Create Release
