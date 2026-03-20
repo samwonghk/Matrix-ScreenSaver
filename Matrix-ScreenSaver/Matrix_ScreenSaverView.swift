@@ -53,6 +53,7 @@ class Matrix_ScreenSaverView: ScreenSaverView {
 //        timer?.invalidate()
 //        timer = nil
         chars.removeAll()
+        exit(0)
     }
 
     @available(*, unavailable)
@@ -68,10 +69,16 @@ class Matrix_ScreenSaverView: ScreenSaverView {
     }
 
     override func animateOneFrame() {
-        super.animateOneFrame()
+//        super.animateOneFrame()
         updateChars()
         setNeedsDisplay(bounds)
         // Update the "state" of the screensaver in this function
+    }
+    
+    override func stopAnimation() {
+        chars.removeAll()
+        super.stopAnimation()
+        exit(0)
     }
     
     private func drawBackground(_ color: NSColor) {
@@ -177,7 +184,7 @@ class Character: NSObject {
     
     public func reset() {
         X = CGFloat(Int(CGFloat.random(in: frame.minX ... frame.maxX) / CGFloat(fontSize)) * fontSize)
-        Y = CGFloat.random(in: frame.maxY ... frame.maxY + 50) // frame.maxY // frame.midY
+        Y = CGFloat.random(in: frame.maxY ... frame.maxY + 100) // frame.maxY // frame.midY
         speed = Float.random(in: 2 ... 12)
         lifespan = Float.random(in: 300 ... 500)
         totalLifespan = lifespan
