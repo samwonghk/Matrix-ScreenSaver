@@ -184,7 +184,7 @@ class Character: NSObject {
     
     public func reset() {
         X = CGFloat(Int(CGFloat.random(in: frame.minX ... frame.maxX) / CGFloat(fontSize)) * fontSize)
-        Y = CGFloat.random(in: frame.maxY ... frame.maxY + 100) // frame.maxY // frame.midY
+        Y = CGFloat.random(in: frame.maxY ... frame.maxY + 90) // frame.maxY // frame.midY
         speed = Float.random(in: 2 ... 12)
         lifespan = Float.random(in: 300 ... 500)
         totalLifespan = lifespan
